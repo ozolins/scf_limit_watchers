@@ -1,0 +1,6 @@
+<p>
+  <label>Roles to remove from watcher list</label>
+  <%= select_tag('settings[roles_to_remove]',
+  options_for_select(Role.sorted.collect{ |s| [s.name, s.id] }, @settings['roles_to_remove']),
+  multiple: true) %>
+</p>
