@@ -20,7 +20,7 @@ module ScfLimitWatchers
               roles.each do |r|
                 r.to_i
                 Role.find_by_id(r.to_i)
-                looker_ids.concat( (@project.users_by_role[Role.find_by_id(r.to_i)] || []).collect(&:id) )
+                looker_ids.concat( (@project.principals_by_role[Role.find_by_id(r.to_i)] || []).collect(&:id) )
               end
 
               scope = @project.users.where.not(:id => looker_ids.uniq)
